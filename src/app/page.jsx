@@ -1,9 +1,32 @@
+"use client";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
   const buttonStyles =
     "w-[100px] h-10 bg-[#00474B] text-white rounded-md flex items-center justify-center font-semibold text-lg transition duration-500 ease-in-out hover:bg-[#9FE8DF] hover:text-[#034A46]";
+  const [tipAmount, setAmount] = useState("$0.00");
+  const [total, setTotal] = useState("$0.00");
+  const [pError, peopleError] = useState(false);
 
+  function calculateTip(percentage) {
+    const people = parseInt(document.getElementById("people").value, 10);
+    if (people <= 0) {
+      peopleError(true);
+      return;
+    }
+
+    const billInput = parseInt(document.getElementById("bill").value, 10);
+
+    const extra = (billInput * percentage) / 100;
+    const bill = billInput + extra / 100;
+
+    const total = Math.round(bill / people);
+    const tip = Math.round(extra / people);
+
+    setTotal(total);
+    setAmount(tip);
+  }
   return (
     <div className="w-full h-full flex justify-center items-center bg-[#C5E4E7] font-mono">
       <div className="w-[800px] h-[400px] bg-[#ffffff] rounded-3xl flex justify-center items-center gap-10">
@@ -16,6 +39,7 @@ export default function Home() {
           <input
             type="number"
             name=""
+            id="bill"
             className="w-full h-10 border-2 border-[#58A59B] bg-[#F3F8FB] rounded-md text-right font-semibold text-[#093F3D] text-lg"
             style={{
               backgroundImage: `url('/icon-dollar.svg')`,
@@ -29,19 +53,19 @@ export default function Home() {
             Select Tip %
           </p>
           <div className="w-100 h-[100px] grid grid-cols-3 grid-rows-2 gap-1 items-center justify-center">
-            <button className={buttonStyles}>
+            <button className={buttonStyles} onClick={() => calculateTip(5)}>
               <p className="">5%</p>
             </button>
-            <button className={buttonStyles}>
+            <button className={buttonStyles} onClick={() => calculateTip(10)}>
               <p className="">10%</p>
             </button>
-            <button className={buttonStyles}>
+            <button className={buttonStyles} onClick={() => calculateTip(15)}>
               <p className="">15%</p>
             </button>
-            <button className={buttonStyles}>
+            <button className={buttonStyles} onClick={() => calculateTip(25)}>
               <p className="">25%</p>
             </button>
-            <button className={buttonStyles}>
+            <button className={buttonStyles} onClick={() => calculateTip(50)}>
               <p className="">50%</p>
             </button>
             <input
@@ -58,6 +82,7 @@ export default function Home() {
               <input
                 type="number"
                 name=""
+                id="people"
                 className="w-full h-10 border-2 border-[#58A59B] bg-[#F3F8FB] rounded-md text-right font-semibold text-[#093F3D] text-lg"
                 style={{
                   backgroundImage: `url('/icon-person.svg')`,
@@ -75,14 +100,18 @@ export default function Home() {
               <p>Tip Amount</p>
               <p className="text-xs text-[#61989B]">/ person</p>
             </div>
-            <p className="text-[#2DC4AE] font-semibold text-4xl pr-5">$2.70</p>
+            <p className="text-[#2DC4AE] font-semibold text-4xl pr-5">
+              {tipAmount}
+            </p>
           </div>
           <div className=" w-[100%] h-[15%] mt-7 flex justify-between items-center">
             <div className="text-white pl-7">
               <p>Total</p>
               <p className="text-xs text-[#61989B]">/ person</p>
             </div>
-            <p className="text-[#2DC4AE] font-semibold text-4xl pr-5">$2.70</p>
+            <p className="text-[#2DC4AE] font-semibold text-4xl pr-5">
+              {total}
+            </p>
           </div>
           <div className="flex justify-center mt-[100px]">
             <button className=" w-72 h-10 rounded-sm bg-[#26C2AE] font-bold text-[#005956]  transition duration-500 ease-in-out hover:bg-[#9FE8DF]">
