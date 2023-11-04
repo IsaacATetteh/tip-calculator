@@ -14,11 +14,16 @@ export default function Home() {
             </p>
           </label>
           <input
-            type="text"
+            type="number"
             name=""
-            className="w-full h-10 border-2 border-[#58A59B] bg-[#F3F8FB] rounded-md"
-            placeholder="$"
-            style={{ padding: "10px" }}
+            className="w-full h-10 border-2 border-[#58A59B] bg-[#F3F8FB] rounded-md text-right font-semibold text-[#093F3D] text-lg"
+            style={{
+              backgroundImage: `url('/icon-dollar.svg')`,
+              backgroundSize: "10px 15px",
+              backgroundPosition: "15px center",
+              backgroundRepeat: "no-repeat",
+              padding: "5px",
+            }}
           />
           <p className="font-semibold text-gray-500 text-sm mt-10 mb-1">
             Select Tip %
@@ -27,26 +32,40 @@ export default function Home() {
             <button className={buttonStyles}>
               <p className="">5%</p>
             </button>
-
             <button className={buttonStyles}>
               <p className="">10%</p>
             </button>
-
             <button className={buttonStyles}>
               <p className="">15%</p>
             </button>
-
             <button className={buttonStyles}>
-              <p className="">20%</p>
+              <p className="">25%</p>
             </button>
-
             <button className={buttonStyles}>
               <p className="">50%</p>
             </button>
             <input
-              className="w-[100px] h-10 rounded-md border-2 border-[#58A59B] bg-[#F3F8FB] text-right text-lg"
+              className="w-[100px] h-10 rounded-md border-2 border-[#58A59B] bg-[#F3F8FB] text-right text-lg font-mono"
               style={{ padding: "10px" }}
             />
+          </div>
+          <div className="h-[20%] w-[100%] mt-7">
+            <label htmlFor="">
+              <p className="font-semibold text-gray-500 text-sm mb-1">
+                Number of People
+              </p>
+              <input
+                type="number"
+                name=""
+                className="w-full h-10 border-2 border-[#58A59B] bg-[#F3F8FB] rounded-md text-right font-semibold text-[#093F3D] text-lg"
+                style={{
+                  backgroundImage: `url('/icon-person.svg')`,
+                  backgroundPosition: "15px center",
+                  backgroundRepeat: "no-repeat",
+                  padding: "5px",
+                }}
+              />
+            </label>
           </div>
         </div>
         <div className="border-black border-2 w-[43%] h-[90%]"></div>
