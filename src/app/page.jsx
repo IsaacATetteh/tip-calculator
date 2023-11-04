@@ -20,15 +20,26 @@ export default function Home() {
           <p className="font-semibold text-gray-500 text-sm mt-10 mb-1">
             Select Tip %
           </p>
-          <div className="border-black border-2 w-100 h-28 grid grid-cols-3 grid-rows-2 gap-2 items-center justify-center">
-            <div className="w-[100px] h-11 bg-[#00474B] text-white  rounded-md flex items-center justify-center">
+          <div className="w-100 h-[100px] grid grid-cols-3 grid-rows-2 gap-1 items-center justify-center">
+            <button className="w-[100px] h-10 bg-[#00474B] text-white rounded-md flex items-center justify-center font-semibold text-lg">
               <p className="">5%</p>
-            </div>
-            <div className="w-30 h-10 border-black border-2">1</div>
-            <div className="w-30 h-10 border-black border-2">1</div>
-            <div className="w-30 h-10 border-black border-2">1</div>
-            <div className="w-30 h-10 border-black border-2">1</div>
-            <div className="w-30 h-10 border-black border-2">1</div>
+            </button>
+            <button className="w-[100px] h-10 bg-[#00474B] text-white rounded-md flex items-center justify-center font-semibold text-lg">
+              <p className="">10%</p>
+            </button>
+            <button className="w-[100px] h-10 bg-[#00474B] text-white rounded-md flex items-center justify-center font-semibold text-lg">
+              <p className="">15%</p>
+            </button>
+            <button className="w-[100px] h-10 bg-[#00474B] text-white rounded-md flex items-center justify-center font-semibold text-lg">
+              <p className="">20%</p>
+            </button>
+            <button className="w-[100px] h-10 bg-[#00474B] text-white rounded-md flex items-center justify-center font-semibold text-lg">
+              <p className="">50%</p>
+            </button>
+            <input
+              className="w-[100px] h-10 rounded-md border-2 border-[#58A59B] bg-[#F3F8FB] text-right text-lg"
+              style={{ padding: "10px" }}
+            />
           </div>
         </div>
         <div className="border-black border-2 w-[43%] h-[90%]"></div>
