@@ -68,7 +68,23 @@ export default function Home() {
             </label>
           </div>
         </div>
-        <div className="border-black border-2 w-[43%] h-[90%]"></div>
+        <div className="border-black border-2 w-[43%] h-[90%] rounded-lg bg-[#00474B]">
+          <div className="border-black border-2 w-[100%] h-[15%] mt-11 flex justify-between items-center">
+            <div className="text-white pl-5">
+              <p>Tip Amount</p>
+              <p className="text-xs text-[#61989B]">/ person</p>
+            </div>
+            <p className="text-white text-4xl pr-5">$0.00</p>
+          </div>
+          <div className="border-black border-2 w-[100%] h-[15%] mt-7 flex justify-between items-center">
+            <div className="text-white pl-5">
+              <p>Total</p>
+              <p className="text-xs text-[#61989B]">/ person</p>
+            </div>
+            <p className="text-white text-4xl pr-5">$0.00</p>
+          </div>
+          <button className="border-2 w-72 h-10">Reset</button>
+        </div>
       </div>
     </div>
   );
