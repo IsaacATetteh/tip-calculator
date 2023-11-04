@@ -1,6 +1,9 @@
 import Image from "next/image";
 
 export default function Home() {
+  const buttonStyles =
+    "w-[100px] h-10 bg-[#00474B] text-white rounded-md flex items-center justify-center font-semibold text-lg transition duration-500 ease-in-out hover:bg-[#9FE8DF] hover:text-[#034A46]";
+
   return (
     <div className="w-full h-full flex justify-center items-center bg-[#C5E4E7] font-mono">
       <div className="w-[800px] h-[400px] bg-[#ffffff] rounded-3xl flex justify-center items-center gap-10">
@@ -21,19 +24,23 @@ export default function Home() {
             Select Tip %
           </p>
           <div className="w-100 h-[100px] grid grid-cols-3 grid-rows-2 gap-1 items-center justify-center">
-            <button className="w-[100px] h-10 bg-[#00474B] text-white rounded-md flex items-center justify-center font-semibold text-lg">
+            <button className={buttonStyles}>
               <p className="">5%</p>
             </button>
-            <button className="w-[100px] h-10 bg-[#00474B] text-white rounded-md flex items-center justify-center font-semibold text-lg">
+
+            <button className={buttonStyles}>
               <p className="">10%</p>
             </button>
-            <button className="w-[100px] h-10 bg-[#00474B] text-white rounded-md flex items-center justify-center font-semibold text-lg">
+
+            <button className={buttonStyles}>
               <p className="">15%</p>
             </button>
-            <button className="w-[100px] h-10 bg-[#00474B] text-white rounded-md flex items-center justify-center font-semibold text-lg">
+
+            <button className={buttonStyles}>
               <p className="">20%</p>
             </button>
-            <button className="w-[100px] h-10 bg-[#00474B] text-white rounded-md flex items-center justify-center font-semibold text-lg">
+
+            <button className={buttonStyles}>
               <p className="">50%</p>
             </button>
             <input
