@@ -10,23 +10,34 @@ export default function Home() {
   const [pError, peopleError] = useState(false);
 
   function calculateTip(percentage) {
-    const people = parseInt(document.getElementById("people").value, 10);
+    const people = parseInt(document.getElementById("people").value, 10) || 0;
+    const billInput = parseInt(document.getElementById("bill").value, 10) || 1;
+
     if (people <= 0) {
       peopleError(true);
       return;
     }
 
-    const billInput = parseInt(document.getElementById("bill").value, 10);
+    if (isNaN(percentage)) {
+      return;
+    }
 
-    const extra = (billInput * percentage) / 100;
-    const bill = billInput + extra / 100;
+    const tipAmount = (billInput * percentage) / 100;
+    const total = ((billInput + tipAmount) / people).toFixed(2);
 
-    const total = Math.round(bill / people);
-    const tip = Math.round(extra / people);
-
-    setTotal(total);
-    setAmount(tip);
+    if (isNaN(tipAmount) && isNaN(tip)) {
+      return;
+    }
+    setTotal("$" + total);
+    setAmount("$" + (tipAmount / people).toFixed(2));
   }
+
+  function recalculateTotal() {
+    const tipPercentage =
+      parseFloat(document.getElementById("custom").value) || 0;
+    calculateTip(tipPercentage);
+  }
+
   return (
     <div className="w-full h-full flex justify-center items-center bg-[#C5E4E7] font-mono">
       <div className="w-[800px] h-[400px] bg-[#ffffff] rounded-3xl flex justify-center items-center gap-10">
@@ -48,6 +59,7 @@ export default function Home() {
               backgroundRepeat: "no-repeat",
               padding: "5px",
             }}
+            onChange={recalculateTotal}
           />
           <p className="font-semibold text-gray-500 text-sm mt-10 mb-1">
             Select Tip %
@@ -72,6 +84,8 @@ export default function Home() {
               className="w-[100px] h-10 rounded-md border-2 border-[#58A59B] bg-[#F3F8FB] text-right text-lg font-mono mr-20"
               style={{ padding: "10px" }}
               placeholder="Custom"
+              id="custom"
+              onChange={(e) => calculateTip(parseFloat(e.target.value))}
             />
           </div>
           <div className="h-[20%] w-[100%] mt-7">
@@ -90,6 +104,7 @@ export default function Home() {
                   backgroundRepeat: "no-repeat",
                   padding: "5px",
                 }}
+                onChange={recalculateTotal}
               />
             </label>
           </div>
