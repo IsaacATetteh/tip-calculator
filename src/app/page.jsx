@@ -8,6 +8,13 @@ export default function Home() {
   const [tipAmount, setAmount] = useState("$0.00");
   const [total, setTotal] = useState("$0.00");
   const [pError, peopleError] = useState(false);
+  function reset() {
+    document.getElementById("bill").value = "";
+    document.getElementById("people").value = "";
+    document.getElementById("custom").value = "";
+    setTotal("$0.00");
+    setAmount("$0.00");
+  }
 
   function calculateTip(percentage) {
     const people = parseInt(document.getElementById("people").value, 10) || 0;
@@ -129,7 +136,10 @@ export default function Home() {
             </p>
           </div>
           <div className="flex justify-center mt-[100px]">
-            <button className=" w-72 h-10 rounded-sm bg-[#26C2AE] font-bold text-[#005956]  transition duration-500 ease-in-out hover:bg-[#9FE8DF]">
+            <button
+              className=" w-72 h-10 rounded-sm bg-[#26C2AE] font-bold text-[#005956]  transition duration-500 ease-in-out hover:bg-[#9FE8DF]"
+              onClick={reset}
+            >
               RESET
             </button>
           </div>
