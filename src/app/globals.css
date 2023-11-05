@@ -15,3 +15,14 @@ input::placeholder {
   font-weight: bold;
   color: #5D7474;
 }
+
+.absolute {
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 15%;
+}
+
+
+
+
+

@@ -51,113 +51,114 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <div className="w-full h-full flex justify-center items-center bg-[#C5E4E7] font-mono">
-        <div className="w-[800px] h-[400px] bg-[#ffffff] rounded-3xl flex justify-center items-center gap-10">
-          <div className="w-[43%] h-[90%]">
-            <label htmlFor="">
-              <p className="font-semibold text-gray-500 text-sm mt-5 mb-1">
-                Bill
-              </p>
-            </label>
-            <input
-              type="number"
-              name=""
-              id="bill"
-              className="w-full h-10 border-2 border-[#58A59B] bg-[#F3F8FB] rounded-md text-right font-semibold text-[#093F3D] text-lg"
-              style={{
-                backgroundImage: `url('/icon-dollar.svg')`,
-                backgroundSize: "10px 15px",
-                backgroundPosition: "15px center",
-                backgroundRepeat: "no-repeat",
-                padding: "5px",
-              }}
-              min="0"
-              onChange={recalculateTotal}
-            />
-            <p className="font-semibold text-gray-500 text-sm mt-10 mb-1">
-              Select Tip %
-            </p>
-            <div className="w-100 h-[100px] grid grid-cols-3 grid-rows-2 gap-1 items-center justify-center">
-              <button className={buttonStyles} onClick={() => calculateTip(5)}>
-                <p className="">5%</p>
-              </button>
-              <button className={buttonStyles} onClick={() => calculateTip(10)}>
-                <p className="">10%</p>
-              </button>
-              <button className={buttonStyles} onClick={() => calculateTip(15)}>
-                <p className="">15%</p>
-              </button>
-              <button className={buttonStyles} onClick={() => calculateTip(25)}>
-                <p className="">25%</p>
-              </button>
-              <button className={buttonStyles} onClick={() => calculateTip(50)}>
-                <p className="">50%</p>
-              </button>
-              <input
-                className="w-[100px] h-10 rounded-md border-2 border-[#58A59B] bg-[#F3F8FB] text-right text-lg font-mono mr-20"
-                style={{ padding: "10px" }}
-                placeholder="Custom"
-                id="custom"
-                onChange={(e) => calculateTip(parseFloat(e.target.value))}
-              />
-            </div>
-            <div className="h-[20%] w-[100%] mt-7">
-              <label htmlFor="">
-                <p className="font-semibold text-gray-500 text-sm mb-1 inline">
-                  Number of People
-                </p>
-                {pError && (
-                  <p className="inline text-red-500 ml-[99px] font-semibold text-sm">
-                    Can't be zero
-                  </p>
-                )}
-                <input
-                  type="number"
-                  name=""
-                  id="people"
-                  className={`w-full h-10 border-2 bg-[#F3F8FB] rounded-md text-right font-semibold text-[#093F3D] text-lg ${
-                    pError ? "border-red-500" : "border-[#58A59B]"
-                  }`}
-                  style={{
-                    backgroundImage: `url('/icon-person.svg')`,
-                    backgroundPosition: "15px center",
-                    backgroundRepeat: "no-repeat",
-                    padding: "5px",
-                  }}
-                  min="0"
-                  onChange={recalculateTotal}
-                />
-              </label>
-            </div>
+    <div className="w-full h-full flex justify-center items-center bg-[#C5E4E7] font-mono">
+      <div className="w-[800px] h-[400px] bg-[#ffffff] rounded-3xl flex justify-center items-center gap-10">
+        <div className="w-[43%] h-[90%]">
+          <div className="absolute">
+            <Image src="/logo.svg" alt="Splitter" width={75} height={75} />
           </div>
-          <div className="border-black border-2 w-[43%] h-[90%] rounded-lg bg-[#00474B]">
-            <div className=" w-[100%] h-[15%] mt-11 flex justify-between items-center">
-              <div className="text-white pl-7">
-                <p>Tip Amount</p>
-                <p className="text-xs text-[#61989B]">/ person</p>
-              </div>
-              <p className="text-[#2DC4AE] font-semibold text-4xl pr-5">
-                {tipAmount}
+          <label htmlFor="">
+            <p className="font-semibold text-gray-500 text-sm mt-5 mb-1">
+              Bill
+            </p>
+          </label>
+          <input
+            type="number"
+            name=""
+            id="bill"
+            className="w-full h-10 border-2 border-[#58A59B] bg-[#F3F8FB] rounded-md text-right font-semibold text-[#093F3D] text-lg"
+            style={{
+              backgroundImage: `url('/icon-dollar.svg')`,
+              backgroundSize: "10px 15px",
+              backgroundPosition: "15px center",
+              backgroundRepeat: "no-repeat",
+              padding: "5px",
+            }}
+            min="0"
+            onChange={recalculateTotal}
+          />
+          <p className="font-semibold text-gray-500 text-sm mt-10 mb-1">
+            Select Tip %
+          </p>
+          <div className="w-100 h-[100px] grid grid-cols-3 grid-rows-2 gap-1 items-center justify-center">
+            <button className={buttonStyles} onClick={() => calculateTip(5)}>
+              <p className="">5%</p>
+            </button>
+            <button className={buttonStyles} onClick={() => calculateTip(10)}>
+              <p className="">10%</p>
+            </button>
+            <button className={buttonStyles} onClick={() => calculateTip(15)}>
+              <p className="">15%</p>
+            </button>
+            <button className={buttonStyles} onClick={() => calculateTip(25)}>
+              <p className="">25%</p>
+            </button>
+            <button className={buttonStyles} onClick={() => calculateTip(50)}>
+              <p className="">50%</p>
+            </button>
+            <input
+              className="w-[100px] h-10 rounded-md border-2 border-[#58A59B] bg-[#F3F8FB] text-right text-lg font-mono mr-20"
+              style={{ padding: "10px" }}
+              placeholder="Custom"
+              id="custom"
+              onChange={(e) => calculateTip(parseFloat(e.target.value))}
+            />
+          </div>
+          <div className="h-[20%] w-[100%] mt-7">
+            <label htmlFor="">
+              <p className="font-semibold text-gray-500 text-sm mb-1 inline">
+                Number of People
               </p>
+              {pError && (
+                <p className="inline text-red-500 ml-[99px] font-semibold text-sm">
+                  Can't be zero
+                </p>
+              )}
+              <input
+                type="number"
+                name=""
+                id="people"
+                className={`w-full h-10 border-2 bg-[#F3F8FB] rounded-md text-right font-semibold text-[#093F3D] text-lg ${
+                  pError ? "border-red-500" : "border-[#58A59B]"
+                }`}
+                style={{
+                  backgroundImage: `url('/icon-person.svg')`,
+                  backgroundPosition: "15px center",
+                  backgroundRepeat: "no-repeat",
+                  padding: "5px",
+                }}
+                min="0"
+                onChange={recalculateTotal}
+              />
+            </label>
+          </div>
+        </div>
+        <div className="border-black border-2 w-[43%] h-[90%] rounded-lg bg-[#00474B]">
+          <div className=" w-[100%] h-[15%] mt-11 flex justify-between items-center">
+            <div className="text-white pl-7">
+              <p>Tip Amount</p>
+              <p className="text-xs text-[#61989B]">/ person</p>
             </div>
-            <div className=" w-[100%] h-[15%] mt-7 flex justify-between items-center">
-              <div className="text-white pl-7">
-                <p>Total</p>
-                <p className="text-xs text-[#61989B]">/ person</p>
-              </div>
-              <p className="text-[#2DC4AE] font-semibold text-4xl pr-5">
-                {total}
-              </p>
+            <p className="text-[#2DC4AE] font-semibold text-4xl pr-5">
+              {tipAmount}
+            </p>
+          </div>
+          <div className=" w-[100%] h-[15%] mt-7 flex justify-between items-center">
+            <div className="text-white pl-7">
+              <p>Total</p>
+              <p className="text-xs text-[#61989B]">/ person</p>
             </div>
-            <div className="flex justify-center mt-[100px]">
-              <button
-                className=" w-72 h-10 rounded-sm bg-[#26C2AE] font-bold text-[#005956]  transition duration-500 ease-in-out hover:bg-[#9FE8DF]"
-                onClick={reset}
-              >
-                RESET
-              </button>
-            </div>
+            <p className="text-[#2DC4AE] font-semibold text-4xl pr-5">
+              {total}
+            </p>
+          </div>
+          <div className="flex justify-center mt-[100px]">
+            <button
+              className=" w-72 h-10 rounded-sm bg-[#26C2AE] font-bold text-[#005956]  transition duration-500 ease-in-out hover:bg-[#9FE8DF]"
+              onClick={reset}
+            >
+              RESET
+            </button>
           </div>
         </div>
       </div>
