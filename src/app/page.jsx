@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function Home() {
   const buttonStyles =
-    "w-[100px] h-10 bg-[#00474B] text-white rounded-md flex items-center justify-center font-semibold text-lg transition duration-500 ease-in-out hover:bg-[#9FE8DF] hover:text-[#034A46]";
+    "w-[100px] h-10 bg-[#00474B] text-white rounded-md flex items-center justify-center font-semibold text-lg transition duration-500 ease-in-out focus:bg-[#26C2AE] focus:text-black hover:bg-[#9FE8DF] hover:text-[#034A46]";
   const [tipAmount, setAmount] = useState("$0.00");
   const [total, setTotal] = useState("$0.00");
   const [pError, peopleError] = useState(false);
@@ -20,7 +20,8 @@ export default function Home() {
 
   function calculateTip(percentage) {
     const people = parseInt(document.getElementById("people").value, 10) || 0;
-    const billInput = parseInt(document.getElementById("bill").value, 10) || 1;
+    const billInput =
+      parseFloat(document.getElementById("bill").value, 10) || 1;
 
     peopleError(false);
 
@@ -29,7 +30,7 @@ export default function Home() {
     }
 
     const tipAmount = (billInput * percentage) / 100;
-    const total = ((billInput + tipAmount) / people).toFixed(2);
+    const total = (billInput + tipAmount) / people;
 
     if (people <= 0) {
       peopleError(true);
@@ -40,11 +41,11 @@ export default function Home() {
       return;
     }
 
-    setTotal("$" + total);
+    setTotal("$" + total.toFixed(2));
     setAmount("$" + (tipAmount / people).toFixed(2));
   }
 
-  function recalculateTotal() {
+  function recalculateTip() {
     const tipPercentage =
       parseFloat(document.getElementById("custom").value) || 0;
     calculateTip(tipPercentage);
@@ -66,7 +67,8 @@ export default function Home() {
             type="number"
             name=""
             id="bill"
-            className="w-full h-10 border-2 border-[#58A59B] bg-[#F3F8FB] rounded-md text-right font-semibold text-[#093F3D] text-lg"
+            className="w-full h-10 focus:border-2 focus:border-[#58A59B] outline-none bg-[#F3F8FB] rounded-md text-right font-semibold text-[#093F3D] text-lg"
+            placeholder="0"
             style={{
               backgroundImage: `url('/icon-dollar.svg')`,
               backgroundSize: "10px 15px",
@@ -75,7 +77,7 @@ export default function Home() {
               padding: "5px",
             }}
             min="0"
-            onChange={recalculateTotal}
+            onChange={recalculateTip}
           />
           <p className="font-semibold text-gray-500 text-sm mt-10 mb-1">
             Select Tip %
@@ -118,9 +120,10 @@ export default function Home() {
                 type="number"
                 name=""
                 id="people"
-                className={`w-full h-10 border-2 bg-[#F3F8FB] rounded-md text-right font-semibold text-[#093F3D] text-lg ${
-                  pError ? "border-red-500" : "border-[#58A59B]"
+                className={`w-full h-10 focus:border-2 focus:border-[#58A59B] outline-none bg-[#F3F8FB] rounded-md text-right font-semibold text-[#093F3D] text-lg ${
+                  pError ? "border-red-500 border-2" : "border-[#58A59B]"
                 }`}
+                placeholder="0"
                 style={{
                   backgroundImage: `url('/icon-person.svg')`,
                   backgroundPosition: "15px center",
@@ -128,7 +131,7 @@ export default function Home() {
                   padding: "5px",
                 }}
                 min="0"
-                onChange={recalculateTotal}
+                onChange={recalculateTip}
               />
             </label>
           </div>
